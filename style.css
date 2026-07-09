@@ -261,11 +261,94 @@ body {
     border-top: 1px solid rgba(140, 110, 84, 0.12);
 }
 
-@media (max-width: 600px) {
-    .card-image-box {
-        height: 380px;
+/* ==========================================================================
+   MOBILE & TABLET RESPONSIVE PERFECT OPTIMIZATION
+   ========================================================================== */
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 768px) {
+    .simple-container {
+        margin: 32px auto 44px;
+        padding: 0 16px;
+        gap: 40px;
     }
+
+    .pinterest-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+    }
+
+    .simple-header {
+        padding: 24px 16px;
+    }
+
     .logo-text {
         font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .simple-container {
+        margin: 24px auto 36px;
+        padding: 0 14px;
+        gap: 36px;
+    }
+
+    .pinterest-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .simple-card {
+        border-radius: 16px;
+    }
+
+    .card-image-box {
+        height: clamp(330px, 88vw, 420px);
+    }
+
+    .card-content {
+        padding: 18px 16px;
+        gap: 16px;
+    }
+
+    .card-content h3 {
+        font-size: 1.3rem;
+        line-height: 1.35;
+    }
+
+    /* Stack View Post and Purchase buttons vertically on narrow mobile screens for perfect tap targets */
+    .card-buttons {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .ig-button,
+    .purchase-button {
+        padding: 13px 16px;
+        font-size: 0.94rem;
+        width: 100%;
+    }
+
+    .section-title {
+        margin-bottom: 20px;
+    }
+
+    .section-title h2 {
+        font-size: 1.85rem;
+    }
+
+    .logo-text {
+        font-size: 2rem;
+    }
+
+    .logo-tagline {
+        font-size: 0.68rem;
+        letter-spacing: 0.2em;
     }
 }
