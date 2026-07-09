@@ -18,13 +18,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
-body {
+html, body {
     background-color: var(--bg-main);
     color: var(--text-main);
     font-family: var(--font-sans);
     line-height: 1.5;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 /* Minimalist Header */
@@ -223,9 +226,10 @@ body {
 
 /* Card Button Group */
 .card-actions {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
+    width: 100%;
 }
 
 /* Purchase Button */
@@ -233,13 +237,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     background: #2A2521;
     color: #FFFFFF;
     text-decoration: none;
-    padding: 13px 20px;
+    padding: 13px 16px;
     border-radius: 999px;
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     font-weight: 600;
     box-shadow: 0 4px 14px rgba(42, 37, 33, 0.18);
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
@@ -266,9 +270,9 @@ body {
 
 @media (max-width: 768px) {
     .simple-container {
-        margin: 28px auto;
-        padding: 0 18px;
-        gap: 40px;
+        margin: 24px auto;
+        padding: 0 16px;
+        gap: 36px;
     }
 
     .pinterest-grid {
@@ -277,50 +281,10 @@ body {
     }
 
     .card-image-box {
-        height: 380px;
-    }
-
-    .card-content {
-        padding: 20px 18px;
-        gap: 16px;
-    }
-
-    .card-content h3 {
-        font-size: 1.35rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .simple-header {
-        padding: 24px 16px;
-    }
-
-    .logo-text {
-        font-size: 1.95rem;
-    }
-
-    .logo-tagline {
-        font-size: 0.68rem;
-        letter-spacing: 0.2em;
-    }
-
-    .simple-container {
-        margin: 20px auto;
-        padding: 0 14px;
-        gap: 32px;
-    }
-
-    .section-title h2 {
-        font-size: 1.75rem;
-    }
-
-    .simple-card {
-        border-radius: 16px;
-    }
-
-    /* Perfectly arranged phone image height */
-    .card-image-box {
-        height: 340px;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        max-height: 400px;
     }
 
     .card-content {
@@ -329,23 +293,76 @@ body {
     }
 
     .card-content h3 {
-        font-size: 1.25rem;
+        font-size: 1.28rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .simple-header {
+        padding: 22px 14px;
+    }
+
+    .logo-text {
+        font-size: 1.85rem;
+    }
+
+    .logo-tagline {
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+    }
+
+    .simple-container {
+        margin: 18px auto;
+        padding: 0 12px;
+        gap: 28px;
+    }
+
+    .section-title {
+        margin-bottom: 20px;
+    }
+
+    .section-title h2 {
+        font-size: 1.6rem;
+    }
+
+    .simple-card {
+        border-radius: 16px;
+    }
+
+    /* Perfectly proportioned 1:1 square photo for phones */
+    .card-image-box {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        max-height: 360px;
+    }
+
+    .card-content {
+        padding: 16px 14px;
+        gap: 14px;
+    }
+
+    .card-content h3 {
+        font-size: 1.18rem;
         line-height: 1.35;
     }
 
-    /* Stack buttons neatly with full-touch targets */
+    /* Keep View Post & Purchase side-by-side cleanly so cards stay neat */
     .card-actions {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
         width: 100%;
     }
 
     .ig-button,
     .purchase-button {
         width: 100%;
-        padding: 13px 16px;
-        font-size: 0.92rem;
+        padding: 12px 8px;
+        font-size: 0.82rem;
         border-radius: 999px;
+        gap: 6px;
+        white-space: nowrap;
+        justify-content: center;
     }
 }
