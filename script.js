@@ -74,31 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
             startTimer();
         });
 
-        // Mobile Touch Swipe Navigation
-        let touchStartX = 0;
-        slider.addEventListener('touchstart', (e) => {
-            isPaused = true;
-            if (timer) clearInterval(timer);
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        slider.addEventListener('touchend', (e) => {
-            const touchEndX = e.changedTouches[0].screenX;
-            const diffX = touchEndX - touchStartX;
-            isPaused = false;
-
-            if (Math.abs(diffX) > 35) {
-                if (diffX < 0) {
-                    // Swiped Left -> Next Slide
-                    updateSlide((currentIndex + 1) % slides.length);
-                } else {
-                    // Swiped Right -> Previous Slide
-                    updateSlide((currentIndex - 1 + slides.length) % slides.length);
-                }
-            }
-            startTimer();
-        }, { passive: true });
-
         // Initialize first slide
         updateSlide(0);
         startTimer();
