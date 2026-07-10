@@ -237,7 +237,12 @@ html, body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: high-quality;
+    filter: contrast(1.08) saturate(1.12) brightness(1.02);
+    backface-visibility: hidden;
 }
 
 /* Story Progress Bar */
