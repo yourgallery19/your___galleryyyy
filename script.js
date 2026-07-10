@@ -78,4 +78,46 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSlide(0);
         startTimer();
     });
+
+    // Horizontal Carousel Navigation Arrows
+    const scrollArrows = document.querySelectorAll('.scroll-arrow');
+    scrollArrows.forEach(arrow => {
+        arrow.addEventListener('click', () => {
+            const targetSelector = arrow.getAttribute('data-target');
+            const carousel = document.querySelector(targetSelector);
+            if (!carousel) return;
+
+            const card = carousel.querySelector('.simple-card');
+            const scrollAmount = card ? card.offsetWidth + 24 : 340;
+
+            if (arrow.classList.contains('scroll-left')) {
+                carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Automatic Horizontal Scrolling for Product Carousels
+    const autoCarousels = document.querySelectorAll('.auto-horizontal-scroll');
+    autoCarousels.forEach(carousel => {
+        let isHovered = false;
+        const intervalMs = parseInt(carousel.getAttribute('data-interval')) || 4500;
+
+        carousel.addEventListener('mouseenter', () => isHovered = true);
+        carousel.addEventListener('mouseleave', () => isHovered = false);
+
+        setInterval(() => {
+            if (isHovered) return;
+            const card = carousel.querySelector('.simple-card');
+            const step = card ? card.offsetWidth + 24 : 340;
+
+            // Loop back to start if scrolled to the right end
+            if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10) {
+                carousel.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                carousel.scrollBy({ left: step, behavior: 'smooth' });
+            }
+        }, intervalMs);
+    });
 });
